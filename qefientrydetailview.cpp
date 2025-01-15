@@ -8,18 +8,18 @@ QEFIEntryDetailBriefView::QEFIEntryDetailBriefView(
     m_briefLayout = new QFormLayout(this);
 
     m_briefLayout->addRow("ID:",
-        new QLabel(QString::asprintf("Boot%04X ", entry.id())));
+        new QLabel(QStringLiteral("Boot%1 ").arg(entry.id(), 4, 16, QLatin1Char('0'))));
     m_briefLayout->addRow("Name:", new QLabel(entry.name()));
 
     QEFILoadOption *loadOption = entry.loadOption();
     if (loadOption) {
         auto dpList = loadOption->devicePathList();
-        m_briefLayout->addRow("Device Path instance:",
+        m_briefLayout->addRow(tr("Device Path instance:"),
             new QLabel(QString::number(dpList.size())));
         // Add a tab to display each DP
         for (int i = 0; i < dpList.size(); i++) {
             // Display type name
-            m_briefLayout->addRow(QString::asprintf("Device Path %d type:", i + 1),
+            m_briefLayout->addRow(tr("Device Path %1 type:").arg(i + 1),
                 new QLabel(
                     convert_device_path_type_to_name(dpList[i]->type()) + " " +
                     convert_device_path_subtype_to_name(dpList[i]->type(),
@@ -54,7 +54,7 @@ QEFIEntryDetailView::QEFIEntryDetailView(QEFIEntry &entry, QWidget *parent)
     m_topLevelLayout = new QBoxLayout(QBoxLayout::LeftToRight, this);
     m_tab = new QTabWidget(this);
     m_tab->addTab(new QEFIEntryDetailBriefView(entry, m_tab),
-        QStringLiteral("Brief"));
+        tr("Brief"));
 
     QEFILoadOption *loadOption = entry.loadOption();
     if (loadOption) {
@@ -62,7 +62,7 @@ QEFIEntryDetailView::QEFIEntryDetailView(QEFIEntry &entry, QWidget *parent)
         // Add a tab to display each DP
         for (int i = 0; i < dpList.size(); i++) {
             m_tab->addTab(new QEFIEntryDPDetailView(dpList[i].get(), m_tab),
-                QString::asprintf("DP %d", i + 1));
+                QStringLiteral("DP %1").arg(i + 1));
         }
     }
     m_topLevelLayout->addWidget(m_tab);

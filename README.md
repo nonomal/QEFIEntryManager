@@ -4,6 +4,8 @@
 
 [![Build Windows x64](https://github.com/Inokinoki/QEFIEntryManager/actions/workflows/cmake-windows-x86-x64.yml/badge.svg)](https://github.com/Inokinoki/QEFIEntryManager/actions/workflows/cmake-windows-x86-x64.yml)
 
+[![Build on FreeBSD](https://github.com/Inokinoki/QEFIEntryManager/actions/workflows/cmake-freebsd-amd64.yml/badge.svg)](https://github.com/Inokinoki/QEFIEntryManager/actions/workflows/cmake-freebsd-amd64.yml)
+
 An EFI manager in Qt.
 
 ## Usage
@@ -21,8 +23,35 @@ click on `Yes` to reboot immediately:
 Right click on the boot entry to enable/disable/delete the entry, or show the detailed properties.
 
 ## Install
+### Arch Linux
+#### AUR
+- Stable version
 
-Download the prebuilt app from CI:
+```shell
+[yay/paru] -S qefientrymanager
+```
+
+- Latest git version
+
+```shell
+[yay/paru] -S qefientrymanager-git
+```
+
+#### archlinuxcn
+- Stable version
+
+```shell
+sudo pacman -S qefientrymanager
+```
+
+- Latest git version
+
+```shell
+sudo pacman -S qefientrymanager-git
+```
+
+### Other Linux Distros & Windows
+Download the prebuilt app from [release](https://github.com/Inokinoki/QEFIEntryManager/releases) or from CI:
 
 - [Linux AppImages from CI](https://github.com/Inokinoki/QEFIEntryManager/actions/workflows/cmake-linux-amd64-appimage.yml)
 - [Windows from CI](https://github.com/Inokinoki/QEFIEntryManager/actions/workflows/cmake-windows-x86-x64.yml)
@@ -30,7 +59,7 @@ Download the prebuilt app from CI:
 Run it as root (*nix):
 
 ```
-sudo ./<executable>
+sudo -E ./<executable>
 ```
 
 or administrator on Windows(right click).

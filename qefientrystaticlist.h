@@ -1,10 +1,11 @@
 #ifndef QEFIENTRYSTATICLIST_H
 #define QEFIENTRYSTATICLIST_H
 
-#include <qefientry.h>
-
-#include <QMap>
 #include <QList>
+#include <QMap>
+#include <QUuid>
+
+#include <qefientry.h>
 
 class QEFIEntryStaticList
 {
